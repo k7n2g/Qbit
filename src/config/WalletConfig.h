@@ -1,5 +1,5 @@
+// Copyright (c) 2018-2021, The DeroGold Developers
 // Copyright (c) 2018, The TurtleCoin Developers
-// Copyright (c) 2018-2023, 2ACoin Developers
 // 
 // Please see the included LICENSE file for more information.
 
@@ -11,10 +11,10 @@
 namespace WalletConfig
 {
     /* The prefix your coins address starts with */
-    const std::string_view addressPrefix = "guns";
+    const std::string_view addressPrefix = "QBC";
 
-    /* Your coins 'Ticker', e.g. Monero = XMR, Bitcoin = BTC */
-    const std::string ticker = "ARMS";
+    /* Your coins 'Ticker', e.g. Qbit, Monero = XMR, Bitcoin = BTC */
+    const std::string ticker = "QBC";
 
     /* The filename to output the CSV to in save_csv */
     const std::string csvFilename = "transactions.csv";
@@ -24,23 +24,24 @@ namespace WalletConfig
     const std::string addressBookFilename = ".addressBook.json";
 
     /* The name of your deamon */
-    const std::string daemonName = "2ACoind";
+    const std::string daemonName = "QbitNetworkd";
 
     /* The name to call this wallet */
-    const std::string walletName = "zedwallet";
+    const std::string walletName = "zodiac";
 
     /* The name of service/walletd, the programmatic rpc interface to a
        wallet */
-    const std::string walletdName = "2acoin-service";
+    const std::string walletdName = "Q-service";
 
     /* The full name of your crypto */
     const std::string coinName = std::string(CryptoNote::CRYPTONOTE_NAME);
 
     /* Where can your users contact you for support? E.g. discord */
-    const std::string contactLink = "http://chat.2acoin.org";
+    const std::string contactLink = "https://qbit.money/";
 
     /* The number of decimals your coin has */
-    const uint8_t numDecimalPlaces = CryptoNote::parameters::CRYPTONOTE_DISPLAY_DECIMAL_POINT;
+    const uint8_t numDecimalPlaces = CryptoNote::parameters
+                                               ::CRYPTONOTE_DISPLAY_DECIMAL_POINT;
 
     /* The length of a standard address for your coin */
     const uint16_t standardAddressLength = 98;
@@ -52,22 +53,22 @@ namespace WalletConfig
        this automatically */
     const uint16_t integratedAddressLength = standardAddressLength + ((64 * 11) / 8);
 
-    /* The default fee value to use with transactions (in ATOMIC units!) */
+    /* The default fee value to use with transactions (in bits!) */
     const uint64_t defaultFee = CryptoNote::parameters::MINIMUM_FEE;
 
-    /* The minimum fee value to allow with transactions (in ATOMIC units!) */
+    /* The minimum fee value to allow with transactions (in bits!) */
     const uint64_t minimumFee = CryptoNote::parameters::MINIMUM_FEE;
 
-    /* The minimum amount allowed to be sent - usually 1 (in ATOMIC units!) */
+    /* The minimum amount allowed to be sent - usually 1 (in bits!) */
     const uint64_t minimumSend = 1;
 
     /* Is a mixin of zero disabled on your network? */
-    const bool mixinZeroDisabled = true;
+    const bool mixinZeroDisabled = false;
 
     /* If a mixin of zero is disabled, at what height was it disabled? E.g.
        fork height, or 0, if never allowed. This is ignored if a mixin of
        zero is allowed */
-    const uint64_t mixinZeroDisabledHeight = CryptoNote::parameters::MIXIN_LIMITS_V2_HEIGHT;
+    const uint64_t mixinZeroDisabledHeight = 0;
 
     /**
      * Max size of a post body response - 10MB

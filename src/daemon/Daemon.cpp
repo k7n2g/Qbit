@@ -279,7 +279,7 @@ int main(int argc, char *argv[])
             logger(oldLogLevel, logColour) << message;
         });
 
-        logger(INFO, BRIGHT_GREEN) << getProjectCLIHeader() << std::endl;
+        logger(INFO, BRIGHT_BLUE) << getProjectCLIHeader() << std::endl;
 
         logger(INFO) << "Program Working Directory: " << cwdPath;
 

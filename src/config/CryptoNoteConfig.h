@@ -25,7 +25,7 @@ namespace CryptoNote
         const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
         const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
         const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
-        const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x1fcdee;
+        const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x478a;
         const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 20;
         const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
         const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT_V3         = 3 * DIFFICULTY_TARGET;
@@ -35,7 +35,7 @@ namespace CryptoNote
         const size_t   BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW_V3          = 11;
 
         // MONEY_SUPPLY - total number coins to be generated
-        const uint64_t MONEY_SUPPLY                                  = UINT64_C(1791000000000000);
+        const uint64_t MONEY_SUPPLY                                  = UINT64_C(100000000000000000);
         const uint32_t ZAWY_DIFFICULTY_BLOCK_INDEX                   = 0;
         const size_t   ZAWY_DIFFICULTY_V2                            = 0;
         const uint8_t  ZAWY_DIFFICULTY_DIFFICULTY_BLOCK_VERSION      = 3;
@@ -44,15 +44,16 @@ namespace CryptoNote
         const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V2              = 50000;  //v4
         const uint64_t LWMA_2_DIFFICULTY_BLOCK_INDEX_V3              = 70000;  //v5
 
-        const unsigned EMISSION_SPEED_FACTOR                         = 21;
-        const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(214920000000000);
+        const unsigned EMISSION_SPEED_FACTOR                         = 28;
+        const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(0);
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
-        const char     GENESIS_COINBASE_TX_HEX[]                     = "011401ff000180a085b2ffee30022d1d76ccd131461bde05a3368179858341cb0aeb97ffbe797da5c14247f80bae2101defedd5500e48c2e2a3beb631b981d075ed1175dc5dc2550700a2f468da9dfe9";
+        const char GENESIS_COINBASE_TX_HEX[] = "012801ff000185afd1b101029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880718401017917d641c9666e99338d49eb0a2d6db927077bba20253c6c738e5efe876f5fad04000000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000006d706af58974e6f82a82611df37f19b67d365abe12e65ffbc2c8cd6afddfad40d";
+       
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
             "GENESIS_COINBASE_TX_HEX must not be empty.");
-        const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1533143395;
+        const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1656355193;
 
         const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
         const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; //size of block (bytes) after which reward for block calculated using block size
@@ -60,8 +61,8 @@ namespace CryptoNote
         const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1  = 10000;
         const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
         const size_t   CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE        = 600;
-        const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 8;
-        const uint64_t MINIMUM_FEE                                   = UINT64_C(50000);
+        const size_t   CRYPTONOTE_DISPLAY_DECIMAL_POINT              = 5;
+        const uint64_t MINIMUM_FEE                                   = UINT64_C(100);
         /* Fee per byte is rounded up in chunks. This helps makes estimates
          * more accurate. It's suggested to make this a power of two, to relate
          * to the underlying storage cost / page sizes for storing a transaction. */
@@ -70,9 +71,9 @@ namespace CryptoNote
         /* Fee to charge per byte of transaction. Will be applied in chunks, see
          * above. This value comes out to 1000 (atomic units) per chunk. We use
          * this value because it makes for pretty resulting fees.
-         * You can read this as.. the fee per chunk is .00001000 per chunk.
+         * You can read this as.. the fee per chunk is .00001 per chunk.
          * The fee per byte is 256000 / 256 (chunk size).    */
-        const double MINIMUM_FEE_PER_BYTE_V1                         = 256000 / FEE_PER_BYTE_CHUNK_SIZE;
+        const double MINIMUM_FEE_PER_BYTE_V1                         = 010.00000 / FEE_PER_BYTE_CHUNK_SIZE;
 
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V1                              = 0;
@@ -134,11 +135,11 @@ namespace CryptoNote
         const uint64_t MINIMUM_FEE_PER_BYTE_V1_HEIGHT                = 775000;      // Height for our first fee to byte change to take effect.
         const uint64_t COINBASE_TRANSACTION_OUTPUT_CLAIMING_HEIGHT   = 780000;      // Coinbase transactions must include the recipient address + tx priv
 
-        /* 4,477,500 ARMS -> Max supply / mixin+1 outputs                 */
+        /* 4,477,500 Qbit -> Max supply / mixin+1 outputs                 */
         /* This is enforced on the daemon side. An output > 4,477,500 causes an invalid block.   */
         const uint64_t MAX_OUTPUT_SIZE_NODE                          = 4'477'500'00000000;
 
-        /* 1 million ARMS                                                   */
+        /* 1 million Qbit                                                  */
         /* Enforced on the client side. An output > 1 million will not be created in a transaction */
         const uint64_t MAX_OUTPUT_SIZE_CLIENT                        = 1'000'000'00000000;
 
@@ -175,31 +176,7 @@ namespace CryptoNote
         /* Block heights we are going to have hard forks at */
         const uint64_t FORK_HEIGHTS[] =
         {
-             50000, //0
-             70000, //1 LWMA-2
-            100000, //2 MIXIN LIMITS V3
-            125000, //3 MIXIN MAX ADJUST
-            300000, //4
-            365000, //5 Extra Limit (5120)
-            365500, //6 Transaction_Signature_Count_Validation
-            390000, //7 Block Blob Shuffle
-            391000, //8 Trans Input Blocktime
-            425000, //9
-            455000, //10 CN-ARMOR/ARGON2
-            585000, //11 MAX_OUTPUT_SIZE
-            700000, //12
-            775000, //13 FEE PER BYTE
-            780000, //14 COINBASE TRANSACTION VALIDATE
-            900000, //15
-            1000000, //16
-            1250000, //17
-            1500000, //18
-            1750000, //19            
-            2000000, //20            
-            2250000, //21            
-            2500000, //22            
-            2750000, //23            
-            3000000  //24
+            
         };
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
@@ -226,7 +203,7 @@ namespace CryptoNote
         const char     MINER_CONFIG_FILE_NAME[]                      = "miner_conf.json";
     } // namespace parameters
 
-    const char     CRYPTONOTE_NAME[]                             = "2ACoin";
+    const char     CRYPTONOTE_NAME[]                             = "Qbit";
 
     const uint8_t  TRANSACTION_VERSION_1                         =  1;
     const uint8_t  TRANSACTION_VERSION_2                         =  2;
@@ -256,9 +233,9 @@ namespace CryptoNote
     const uint64_t BLOCKS_SYNCHRONIZING_DEFAULT_COUNT            =  100;    //by default, blocks count in blocks downloading
     const size_t   COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT         =  1000;
 
-    const int      P2P_DEFAULT_PORT                              =  17890;
-    const int      RPC_DEFAULT_PORT                              =  17910;
-    const int      SERVICE_DEFAULT_PORT                          =  17760;
+    const int      P2P_DEFAULT_PORT                              =  22100;
+    const int      RPC_DEFAULT_PORT                              =  22101;
+    const int      SERVICE_DEFAULT_PORT                          =  8070;
 
     const size_t   P2P_LOCAL_WHITE_PEERLIST_LIMIT                =  1000;
     const size_t   P2P_LOCAL_GRAY_PEERLIST_LIMIT                 =  5000;
@@ -296,27 +273,22 @@ namespace CryptoNote
     const uint64_t LEVELDB_MAX_OPEN_FILES                        = 128;           // 128 files
     const uint64_t LEVELDB_MAX_FILE_SIZE_MB                      = 1024;          // 1024MB = 1GB
 
-    const char     LATEST_VERSION_URL[]                          = "https://github.com/2acoin/2acoin/releases/latest";
-    const std::string LICENSE_URL                                = "https://github.com/2acoin/2acoin/blob/master/LICENSE";
+    const char LATEST_VERSION_URL[] = "https://github.com/QbitNetwork/Qbit";
 
-    /* MainNet Network Identifier for 2ACoin */
+    const std::string LICENSE_URL = "https://github.com/QbitNetwork/Qbit/blob/master/LICENSE";
+
+    /* MainNet Network Identifier */
     const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
     {
-        {  0xff, 0x01, 0xab, 0xcd, 0x17, 0x89, 0xaa, 0xaa, 0x17, 0x91, 0x12, 0x15, 0x17, 0x91, 0x00, 0x01  }
+          { 0x47, 0x23, 0x5e, 0x13, 0x58, 0x57, 0x6c, 0x6c, 0x23, 0x76, 0x6, 0x6e, 0x22, 0x6f, 0x6f, 0x46 }
     };
 
-    /* TestNet Network Identifier for 2ACoin */
-    /* const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
-    {
-        {  0xfa, 0xfa, 0xab, 0xcd, 0x17, 0x89, 0xaa, 0xaa, 0x17, 0x91, 0x12, 0x15, 0x17, 0x91, 0x00, 0x00  }
-    };
-	*/
 
     const char* const SEED_NODES[] = {
-      "45.63.35.51:17890",        //US-WEST - Seattle(1)
-      "144.202.29.252:17890",     //US-EAST - Atlanta (2)
-      "45.76.232.71:17890",       //US-CENTRAL-01 - Dallas (3)
-      "108.61.205.5:17890",       //US-CENTRAL-02 - Dallas (4)
-      "95.179.141.4:17890"        //EU-WEST - Amsterdam (5)
+        "185.198.27.165:22100", // QBIT SEED TRUSTED
+        "184.174.32.225:22100", // QBIT SEED TRUSTED
+        "213.136.80.146:22100", // QBIT SEED TRUSTED      
+        "45.84.138.159:22100", // QBIT SEED TRUSTED
+        "173.249.37.98:22100", //  QBIT SEED TRUSTED
       };
 } // Namespace CryptoNote
