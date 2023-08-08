@@ -22,9 +22,9 @@ namespace CryptoNote
         const uint64_t DIFFICULTY_TARGET                             = 90; // seconds
         const uint64_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY             = 24 * 60 * 60 / DIFFICULTY_TARGET;
 
-        const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 500000000;
-        const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 500000000;
-        const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000;
+        const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER                   = 800000000;
+        const size_t   CRYPTONOTE_MAX_BLOCK_BLOB_SIZE                = 800000000;
+        const size_t   CRYPTONOTE_MAX_TX_SIZE                        = 1000000000000;
         const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX       = 0x478a;
         const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW          = 20;
         const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT            = 60 * 60 * 2;
@@ -48,12 +48,11 @@ namespace CryptoNote
         const uint64_t GENESIS_BLOCK_REWARD                          = UINT64_C(0);
         static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
-        const char GENESIS_COINBASE_TX_HEX[] = "012801ff000185afd1b101029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880718401017917d641c9666e99338d49eb0a2d6db927077bba20253c6c738e5efe876f5fad04000000000000000000000000000000000000000000000000000000000000000005000000000000000000000000000000000000000000000000000000000000000006d706af58974e6f82a82611df37f19b67d365abe12e65ffbc2c8cd6afddfad40d";
-       
+        const char GENESIS_COINBASE_TX_HEX[] = "011401ff000185afd1b101029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071840101e9de5c4f03ce383bdaa0b569dbfcd83840c9c9ff375e66745f9b6cc2dc086e40040000000000000000000000000000000000000000000000000000000000000000050000000000000000000000000000000000000000000000000000000000000000060938897f608a9324f0a12a9ac930e0d536531b80d799723fc74947a284040c08";
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
             "GENESIS_COINBASE_TX_HEX must not be empty.");
-        const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 1656355193;
+        const uint64_t GENESIS_BLOCK_TIMESTAMP                       = 0;
 
         const size_t   CRYPTONOTE_REWARD_BLOCKS_WINDOW               = 100;
         const size_t   CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE     = 100000; //size of block (bytes) after which reward for block calculated using block size
@@ -141,7 +140,7 @@ namespace CryptoNote
 
         /* 1 million Qbit                                                  */
         /* Enforced on the client side. An output > 1 million will not be created in a transaction */
-        const uint64_t MAX_OUTPUT_SIZE_CLIENT                        = 1'000'000'00000000;
+        const uint64_t MAX_OUTPUT_SIZE_CLIENT                        = 4'400'000'00000000;
 
         const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS     = 1;
         const uint64_t CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_SECONDS    = DIFFICULTY_TARGET * CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS;
@@ -280,7 +279,7 @@ namespace CryptoNote
     /* MainNet Network Identifier */
     const static   boost::uuids::uuid CRYPTONOTE_NETWORK         =
     {
-          { 0x47, 0x23, 0x5e, 0x13, 0x58, 0x57, 0x6c, 0x6c, 0x23, 0x76, 0x6, 0x6e, 0x22, 0x6f, 0x6f, 0x46 }
+          { 0x11, 0x32, 0x5e, 0x43, 0x37, 0x61, 0x6c, 0x6c, 0x42, 0x67, 0x6, 0x6e, 0x18, 0x6f, 0x6f, 0x46 }
     };
 
 
