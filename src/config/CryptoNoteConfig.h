@@ -283,11 +283,11 @@ namespace CryptoNote
     };
 
 
-    const char* const SEED_NODES[] = {
+     const char* const SEED_NODES[] = {
         "185.198.27.165:22100", // QBIT SEED TRUSTED
-        "184.174.32.225:22100", // QBIT SEED TRUSTED
-        "213.136.80.146:22100", // QBIT SEED TRUSTED      
+        "89.117.48.208:22100", // QBIT SEED TRUSTED
+        "89.116.30.113:22100", // QBIT SEED TRUSTED      
         "45.84.138.159:22100", // QBIT SEED TRUSTED
-        "173.249.37.98:22100", //  QBIT SEED TRUSTED
+        "89.116.25.229:22100", //  QBIT SEED TRUSTED
       };
 } // Namespace CryptoNote
